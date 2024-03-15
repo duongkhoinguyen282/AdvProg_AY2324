@@ -8,9 +8,10 @@ using std::endl;
 using std::stod;
 
 
-double mySin(double x);
-double myCos(double x);
-double mySqrt(double x);
+double factorial(int x){
+    if(x <= 1) return 1;
+    return x*factorial(x-1);
+}
 
 /***
     Args:
@@ -20,7 +21,16 @@ double mySqrt(double x);
 ***/
 double myCos(double x) 
 {
-    return 0.0;
+    if(x < 0) x = abs(x);
+    while(x >= 2*M_PI) x -= 2*M_PI;
+    double ans = 1.0f;
+
+    int i = 2;
+    while(i<=100){
+        ans += pow(-1,i/2)*(pow(x,i)/factorial(i));
+        i+=2;
+    }
+    return ans;
 }
 
 /***
@@ -31,7 +41,16 @@ double myCos(double x)
 ***/
 double mySin(double x)
 {
-    return 0.0;
+    while(x >= 2*M_PI) x -= 2*M_PI;
+    while(x < -2*M_PI) x += 2*M_PI;
+    double ans = 0;
+
+    int i = 1;
+    while(i<=100){
+        ans += pow(-1,i/2)*(pow(x,i)/factorial(i));
+        i+=2;
+    }
+    return ans;
 }
 
 
@@ -46,7 +65,19 @@ double mySqrt(double x) {
         cout << "Invalid argument" << endl;
         exit(1);
     }
+    double n = x;
 
+    while(n >= 100) n/=10;
+
+    double ans = 0, result = 0;
+
+    do{
+        ans = result;
+        n = 0.5*(n+x/n);
+        result = n;
+    }while(abs(result - ans) > 0.001);
     
-    return 0;
+    return ans;
+
+    // return pow(x,1/2);
 }
