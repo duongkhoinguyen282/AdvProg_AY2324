@@ -25,7 +25,7 @@ double myCos(double x)
     double ans = 1.0f;
 
     int i = 2;
-    while(i<=100){
+    while(i<=300){
         ans += pow(-1,i/2)*(pow(x,i)/factorial(i));
         i+=2;
     }
@@ -45,7 +45,7 @@ double mySin(double x)
     double ans = 0;
 
     int i = 1;
-    while(i<=100){
+    while(i<=300){
         ans += pow(-1,i/2)*(pow(x,i)/factorial(i));
         i+=2;
     }

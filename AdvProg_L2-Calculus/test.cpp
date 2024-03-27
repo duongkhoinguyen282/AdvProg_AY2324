@@ -23,7 +23,7 @@ double myCos(double x)
 
 int main(){
 
-    cout<<cos(-1*M_PI/3);
+    cout<<cos(M_PI/3);
 
 
     return 0;
