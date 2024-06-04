@@ -1,6 +1,12 @@
 #ifndef _GUESSIT_H
 #define _GUESSIT_H
 
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
 int generateRandomNumber();
 int getPlayerGuess();
 std::string getAnswer(int number, int randomNumber);
